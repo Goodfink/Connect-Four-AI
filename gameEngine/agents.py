@@ -1,6 +1,18 @@
 import random, math, time, copy
-from gameEngine import legal_moves, apply_move, is_terminal, is_winner, is_draw, get_opponent, find_winning_moves, get_drop_row, simulate_move, directions, is_valid, COLS, ROWS, EMPTY, P1, P2
-
+from gameEngine import (
+    legal_moves,
+    apply_move,
+    is_terminal,
+    is_winner,
+    is_draw,
+    directions,
+    is_valid,
+    COLS,
+    ROWS,
+    EMPTY,
+    P1,
+    P2,
+)
 # Helper functions
 def get_opponent(player):
     """Returns the other player's token."""
@@ -49,8 +61,9 @@ def timed_move(agent, board, player):
 
 # Agent 1: Random
 class RandomAgent:
-    def get_move(self, board):
+    def get_move(self, board, player):
         return random.choice(legal_moves(board))
+
     
 
 
@@ -130,9 +143,9 @@ class MinimaxAgent:
     SCORE_OPP_TWO_OPEN = -10
     CENTER_WEIGHT = 6
  
-    def __init__(self, depth=4, rng=None):
-        super().__init__(rng)
+    def __init__(self, depth=4):
         self.depth = depth
+
  
     def get_move(self, board, player):
         moves = legal_moves(board)
@@ -158,7 +171,7 @@ class MinimaxAgent:
             alpha = max(alpha, best_score)
  
         # Mandatory tie-breaking rule.
-        return self.rng.choice(best_moves)
+        return random.choice(best_moves)
  
     def _minimax_value(self, board, depth, alpha, beta, maximizing, player):
         """
