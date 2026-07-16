@@ -2,7 +2,7 @@
 
 ## Video
 
-Demonstration video link: `PASTE_VIDEO_LINK_HERE`
+Demonstration video link: `https://drive.google.com/file/d/1o6yETIxo-DPrrXYDx3pdObF5TCW5yvF-/view'
 
 ## Run
 
